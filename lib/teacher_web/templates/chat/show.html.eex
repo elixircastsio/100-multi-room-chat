@@ -1,0 +1,13 @@
+<h2>Room: <%= @room%></h2>
+<div id="chat-box">
+<%= for message <- @messages do %>
+  <p><b><%= message.name %>:</b> <%= message.body %></p>
+<% end %>
+</div>
+<%= form_for @conn, "#", [id: "chat-form"], fn f -> %>
+  <%= text_input f, :username, placeholder: "Username", id: "user-name" %>
+  <br>
+  <%= textarea f, :message, placeholder: "Your comment", id: "user-msg" %>
+  <br>
+  <%= submit "Post" %>
+<% end %>
